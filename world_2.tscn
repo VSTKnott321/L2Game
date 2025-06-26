@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=3 uid="uid://dctoa1a1aqv66"]
+
+[ext_resource type="PackedScene" uid="uid://hc30380bspkj" path="res://player.tscn" id="1_xur1r"]
+[ext_resource type="Texture2D" uid="uid://bn7770kpijh3f" path="res://textures/dirtgroundTexture.png" id="2_amb5c"]
+[ext_resource type="PackedScene" uid="uid://bakki2446e4br" path="res://enemy.tscn" id="3_d7owv"]
+[ext_resource type="PackedScene" uid="uid://8dfs3r4pcr6o" path="res://ammo_pickup.tscn" id="4_adido"]
+[ext_resource type="PackedScene" uid="uid://cuvnw0ch1xmq1" path="res://rock.tscn" id="5_6nkkl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m2v8p"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_0mjku"]
+sky_material = SubResource("ProceduralSkyMaterial_m2v8p")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_lmf65"]
+background_mode = 2
+sky = SubResource("Sky_0mjku")
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_density = 0.1044
+volumetric_fog_albedo = Color(0.741176, 0.894118, 0.996078, 1)
+volumetric_fog_emission = Color(0.196078, 0.196078, 0.196078, 1)
+volumetric_fog_emission_energy = 0.0
+volumetric_fog_length = 100.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxsk1"]
+albedo_color = Color(0.807843, 0.580392, 0.403922, 0.737255)
+albedo_texture = ExtResource("2_amb5c")
+uv1_triplanar = true
+
+[node name="world2" type="Node3D"]
+
+[node name="player" parent="." instance=ExtResource("1_xur1r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.250077, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 1.15
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lmf65")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(2.71028, 0, 0, 0, 1.04261, 0, 0, 0, 2.26449, -0.0425216, 0.0137944, 0.453694)
+use_collision = true
+collision_layer = 7
+size = Vector3(200, 0.002, 200)
+material = SubResource("StandardMaterial3D_vxsk1")
+
+[node name="enemy" parent="." instance=ExtResource("3_d7owv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9775, 0.846145, 10.8825)
+
+[node name="spawns" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.758, 0.702823, 5.11737)
+
+[node name="spawn1" type="Node3D" parent="spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3553, 0.372655, -40.1867)
+
+[node name="spawn2" type="Node3D" parent="spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.8348, -0.385973, 16.5978)
+
+[node name="spawn3" type="Node3D" parent="spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.076, 0, 30.9486)
+
+[node name="spawn4" type="Node3D" parent="spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.6865, 0, -67.0179)
+
+[node name="Spawn_Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="enemy2" parent="." instance=ExtResource("3_d7owv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3354, 0.464573, 21.1557)
+
+[node name="enemy3" parent="." instance=ExtResource("3_d7owv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1164, 1.06907, -23.4283)
+
+[node name="ammoPickup" parent="." instance=ExtResource("4_adido")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5782, 0.543423, 10.0614)
+
+[node name="ammoPickup2" parent="." instance=ExtResource("4_adido")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4522, 1.08685, 4.57225)
+
+[node name="ammoPickup3" parent="." instance=ExtResource("4_adido")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4403, 1.08685, -5.8613)
+
+[node name="ammoPickup4" parent="." instance=ExtResource("4_adido")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3734, -0.0362735, -28.3942)
+
+[node name="rock" parent="." instance=ExtResource("5_6nkkl")]
+transform = Transform3D(2.44581, 0, 1.40268, 0, 1, 0, -2.27948, 0, 1.50503, 35.3303, 0.6417, 44.9665)
+
+[node name="rock2" parent="." instance=ExtResource("5_6nkkl")]
+transform = Transform3D(2.74188, 1.99384e-15, 5.56906, 8.8669, 0.0317489, 0.936769, -0.116074, 2.4253, -0.0122628, 184.815, 5.66915, 32.1078)
+
+[node name="rock3" parent="." instance=ExtResource("5_6nkkl")]
+transform = Transform3D(6.42018, -1.22638e-16, 8.42625, -20.7544, 0.0297299, -1.41685, -0.626853, -0.984322, -0.0427935, 179.489, 3.77407, 33.8111)
+
+[node name="rock4" parent="." instance=ExtResource("5_6nkkl")]
+transform = Transform3D(6.94396, -5.09094, 1.4018, 14.8795, 2.09737, 0.754608, 3.45803, 1.19819, 4.63512, 180.261, 5.95376, 32.1078)
+
+[node name="rock5" parent="." instance=ExtResource("5_6nkkl")]
+transform = Transform3D(2.78462, 0, 5.54178, 0, 1, 0, -9.00589, 0, -0.93226, 183.672, 9.36187, 37.2271)
+
+[node name="rock6" parent="." instance=ExtResource("5_6nkkl")]
+transform = Transform3D(8.11852, 0, 16.9211, 0, 1, 0, -26.2565, 0, -2.84654, 171.359, 10.3931, 48.5526)
+
+[node name="rock7" parent="." instance=ExtResource("5_6nkkl")]
+transform = Transform3D(0.854295, 0, 3.12185, 0, 4.67895, 0, -2.76292, 0, -0.52517, 181.288, 1.2834, 61.5176)
+
+[node name="rock8" parent="." instance=ExtResource("5_6nkkl")]
+transform = Transform3D(-0.346233, 2.31176, 3.68119, 19.193, 0.450888, 1.46521, -6.8882, 1.14014, -8.0435, 165.393, 0.110857, 60.5981)
+
+[node name="PlayerSpawn" type="Node3D" parent="."]
+transform = Transform3D(1.96238, 0, 0, 0, 1, 0, 0, 0, 1, 65.6398, 6.87286, 0)

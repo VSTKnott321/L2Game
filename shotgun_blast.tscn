@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://cynapiwueyfrw"]
+
+[ext_resource type="Script" path="res://shotgun_blast.gd" id="1_fe116"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rai4b"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.815686, 0.772549, 0.168627, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yv04b"]
+direction = Vector3(2.08165e-12, 2.08165e-12, -100)
+spread = 2.0
+flatness = 0.44
+gravity = Vector3(2.08165e-12, -1, 2.08165e-12)
+initial_velocity_min = 90.0
+initial_velocity_max = 100.0
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+collision_use_scale = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_mduyj"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6moj2"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_iwq43"]
+
+[node name="Shotgun_Blast" type="Node3D"]
+script = ExtResource("1_fe116")
+damage = 110
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.9978, 0, 0, 0, 0.9978, 0, 0, 0, 0.9978, 0, 0, -1.25124)
+layers = 3
+material_override = SubResource("StandardMaterial3D_rai4b")
+cast_shadow = 0
+emitting = false
+amount = 18
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 0.1
+process_material = SubResource("ParticleProcessMaterial_yv04b")
+draw_pass_1 = SubResource("BoxMesh_mduyj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 3
+material_override = SubResource("StandardMaterial3D_6moj2")
+mesh = SubResource("SphereMesh_iwq43")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00215387, -0.0057075, 0.325465)
+target_position = Vector3(2.08165e-12, 2.08165e-12, -1)
+collision_mask = 7
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

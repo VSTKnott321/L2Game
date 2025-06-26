@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcgns7q4fbudk"]
+
+[ext_resource type="Script" path="res://bullet_trail.gd" id="1_51y7a"]
+
+[node name="bullet_trail" type="MeshInstance3D"]
+script = ExtResource("1_51y7a")

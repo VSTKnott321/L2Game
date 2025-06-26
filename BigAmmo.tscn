@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqqwnwfwa17n1"]
+
+[ext_resource type="PackedScene" uid="uid://8dfs3r4pcr6o" path="res://ammo_pickup.tscn" id="1_el0sk"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lh7s5"]
+load_path = "res://.godot/imported/pixil-frame-0.png-cbc73171fe2b5937a3d1d952a7691816.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yutv"]
+albedo_color = Color(0.376471, 0.376471, 0.376471, 1)
+albedo_texture = SubResource("CompressedTexture2D_lh7s5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gar2u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xjkuk"]
+material = SubResource("StandardMaterial3D_gar2u")
+size = Vector3(1, 0.5, 0.75)
+
+[node name="BigAmmoPickup" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00330877, -0.00430179, 0.00114822)
+
+[node name="ammoPickup" parent="." instance=ExtResource("1_el0sk")]
+ammo_amount = 100
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ammoPickup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.166615, 0.0157599, -0.759147)
+material_override = SubResource("StandardMaterial3D_7yutv")
+mesh = SubResource("BoxMesh_xjkuk")
+skeleton = NodePath("../..")

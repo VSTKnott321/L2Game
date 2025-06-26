@@ -1,0 +1,11 @@
+Model Information:
+* title:	Western Stylised Rock
+* source:	https://sketchfab.com/3d-models/western-stylised-rock-24c821bbe0a1469ba66b9d5894546d9a
+* author:	pixelgrapher (https://sketchfab.com/pixelgrapher)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Western Stylised Rock" (https://sketchfab.com/3d-models/western-stylised-rock-24c821bbe0a1469ba66b9d5894546d9a) by pixelgrapher (https://sketchfab.com/pixelgrapher) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

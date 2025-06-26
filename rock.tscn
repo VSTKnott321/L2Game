@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuvnw0ch1xmq1"]
+
+[ext_resource type="PackedScene" uid="uid://s281eh26ctty" path="res://rock_-_rock.glb" id="1_vb2mm"]
+
+[node name="rock" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.462781, 0.582313, 0.0504766)
+
+[node name="StaticBody3d" type="StaticBody3D" parent="."]
+collision_layer = 7
+
+[node name="rock_-_rock" parent="StaticBody3d" instance=ExtResource("1_vb2mm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.171253, 0, 0.416477)
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="StaticBody3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.138179, 0.48343)
+polygon = PackedVector2Array(-0.736961, -0.278114, 0.451818, -0.33415, 0.539876, -0.138022, 0.495847, 0.442358, 0.463826, 0.97871, 0.175637, 1.98737, 0.0769775, 2.14117, -0.438086, 2.20468, -0.762647, 1.77428, -0.861426, 0.906433, 0, 0)
+
+[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="StaticBody3d"]
+transform = Transform3D(0.0515712, 0, -0.715343, 0, 1, 0, 1.01313, 0, 0.036413, 0, -1.50571, 4.07357)
+polygon = PackedVector2Array(-2.98252, 1.15626, -4.21313, 1.1692, -4.35563, 2.44997, -3.97996, 3.70486, -3.28045, 3.62724, -2.85299, 2.26885)
